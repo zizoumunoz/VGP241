@@ -4,7 +4,9 @@
     <Platform Name="x86" />
   </Configurations>
   <Folder Name="/Assignments/" />
-  <Folder Name="/Exercises/" />
+  <Folder Name="/Exercises/">
+    <Project Path="ArraysAndVectors/ArraysAndVectors.vcxproj" />
+  </Folder>
   <Folder Name="/Library/">
     <Project Path="CustomLib/CustomLib.vcxproj" />
   </Folder>
