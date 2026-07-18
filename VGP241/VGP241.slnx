@@ -3,6 +3,8 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+  <Folder Name="/Assignments/" />
+  <Folder Name="/Exercises/" />
   <Folder Name="/Library/">
     <Project Path="CustomLib/CustomLib.vcxproj" />
   </Folder>
