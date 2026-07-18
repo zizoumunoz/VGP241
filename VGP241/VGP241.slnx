@@ -3,5 +3,7 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="CustomLib/CustomLib.vcxproj" />
+  <Folder Name="/Library/">
+    <Project Path="CustomLib/CustomLib.vcxproj" />
+  </Folder>
 </Solution>
