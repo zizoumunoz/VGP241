@@ -32,6 +32,9 @@ int main()
         players[i].initPlayer();
     }
 
-    std::cout << players[0].getName() << "\n";
-
+    for (size_t i = 0; i < players.Size(); i++)
+    {
+        players[i].display();
+        std::cout << "\n";
+    }
 }

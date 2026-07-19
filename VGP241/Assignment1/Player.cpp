@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Stats.h"
+#include <iostream>
 
 Player::Player(std::string name)
 	: mName(name)
@@ -25,4 +26,15 @@ int Player::getStat(Stats stat) const
 const std::string Player::getName() const
 {
 	return mName;
+}
+
+void Player::display() const
+{
+	std::cout
+		<< mName << "\n"
+		<< "Health: " << mStats[Stats::Health] << "\t"
+		<< "Attack: " << mStats[Stats::Attack] << "\t"
+		<< "Defense: " << mStats[Stats::Defense] << "\t"
+		<< "Stamina: " << mStats[Stats::Stamina] << "\t"
+		<< "Speed: " << mStats[Stats::Speed] << "\t\n";
 }

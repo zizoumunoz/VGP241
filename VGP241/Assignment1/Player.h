@@ -15,6 +15,8 @@ public:
 	int getStat(Stats stat) const;
 	const std::string getName() const;
 
+	void display() const;
+
 private:
 	std::string mName = "";
 	Array<int, 5> mStats;
