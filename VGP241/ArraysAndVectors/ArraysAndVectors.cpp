@@ -1,36 +1,53 @@
 
 #include <iostream>
 #include <Array.h>
+#include <Vector.h>
 int main()
 {
     std::cout << "Hello World!\n";
 
     Array<int, 10> myCustomArray;
-
-    for (size_t i = 0; i < myCustomArray.Size(); i++)
+    Vector<int> myVec;
+    myVec.Resize(10);
+    for (size_t i = 0; i < myVec.Size(); i++)
     {
-        myCustomArray[i] = 0;
-        std::cout << myCustomArray[i] << " ";
+        std::cout << (myVec[i] += rand()) << "\n";
     }
 
-    std::cout << "\n";
+    std::cout << "\n\n";
 
-    for (size_t i = 0; i < myCustomArray.Size(); i++)
+    myVec.PopBack();
+    myVec.PopBack();
+
+    for (size_t i = 0; i < myVec.Size(); i++)
     {
-        myCustomArray[i] = rand() % 10;
-        std::cout << myCustomArray[i] << " ";
+        std::cout << myVec[i] << "\n";
     }
 
-    std::cout << "\n";
+    //for (size_t i = 0; i < myCustomArray.Size(); i++)
+    //{
+    //    myCustomArray[i] = 0;
+    //    std::cout << myCustomArray[i] << " ";
+    //}
 
-    Array<int, 10> otherArray;
+    //std::cout << "\n";
 
-    otherArray = myCustomArray;
-    for (size_t i = 0; i < otherArray.Size(); i++)
-    {
-        otherArray[i] += 5;
-        std::cout << otherArray[i] << " ";
-    }
+    //for (size_t i = 0; i < myCustomArray.Size(); i++)
+    //{
+    //    myCustomArray[i] = rand() % 10;
+    //    std::cout << myCustomArray[i] << " ";
+    //}
+
+    //std::cout << "\n";
+
+    //Array<int, 10> otherArray;
+
+    //otherArray = myCustomArray;
+    //for (size_t i = 0; i < otherArray.Size(); i++)
+    //{
+    //    otherArray[i] += 5;
+    //    std::cout << otherArray[i] << " ";
+    //}
 
 
     // Build array of 10 ints
