@@ -52,7 +52,7 @@ public:
 		if (other.m_Capacity > 0)
 		{
 			m_Values = new T[other.m_Capacity];
-			for (size_t i = 0; i < other.m_Capacity; i++)
+			for (size_t i = 0; i < other.m_Capacity; ++i)
 			{
 				m_Values[i] = other.m_Values[i];
 			}
@@ -126,17 +126,17 @@ public:
 		if (size < m_Size)
 		{
 			// destroy elements above current size
-			for (size_t i = 0; i < m_Size; i++)
+			for (size_t i = 0; i < m_Size; ++i)
 			{
 				// call destructor of unused elements
 				m_Values[i].~T();
 			}
 		}
-		else if (size > m_Size)
+		else if (m_Size < size)
 		{
-			size_t newCapacity = std::max(size, m_Capacity * 2);
+			size_t newCapacity = std::max(size, m_Capacity);
 			Reserve(newCapacity);
-			for (size_t i = 0; i < m_Size; i++)
+			for (size_t i = m_Size; i < size; i++)
 			{
 				m_Values[i] = initialValue;
 			}
@@ -165,6 +165,8 @@ public:
 	// add elements to the vector
 	void PushBack(const T& value)
 	{
+		++m_Size;	// MOVED THIS TO TOP OTHERWISE IT WONT ALLOCATE MORE MEMORY
+
 		if (m_Size >= m_Capacity)
 		{
 			// if capacity is 0, set a default min capacity or double current 
@@ -172,7 +174,6 @@ public:
 			Reserve(newCapacity);
 		}
 		m_Values[m_Size] = value;
-		++m_Size;
 	}
 
 	// remove element from the back
