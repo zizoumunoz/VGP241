@@ -57,20 +57,18 @@ int main()
 
 	players.PushBack(Player("Dave"));
 
-	std::cout << players.Size() << " ";
-	std::cout << players.Capacity();
 
 	players.PushBack(Player("Steve"));
-	//players.PushBack(Player("Matthew"));
-	//players.PushBack(Player("Gilbert"));
-	//players.PushBack(Player("Peter"));
-	//players.PushBack(Player("Joe"));
+	players.PushBack(Player("Matthew"));
+	players.PushBack(Player("Gilbert"));
+	players.PushBack(Player("Peter"));
+	players.PushBack(Player("Joe"));
 
-	//players.PushBack(Player("Glenn"));
-	//players.PushBack(Player("Meg"));
-	//players.PushBack(Player("Stewart"));
-	//players.PushBack(Player("Brian"));
-	//players.PushBack(Player("Quahog"));
+	players.PushBack(Player("Glenn"));
+	players.PushBack(Player("Meg"));
+	players.PushBack(Player("Stewart"));
+	players.PushBack(Player("Brian"));
+	players.PushBack(Player("Quahog"));
 
 	// 3f. Pick a random 2 players, compare their stats to see who would win in a fight
 

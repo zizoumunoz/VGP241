@@ -126,7 +126,7 @@ public:
 		if (size < m_Size)
 		{
 			// destroy elements above current size
-			for (size_t i = 0; i < m_Size; ++i)
+			for (size_t i = size; i < m_Size; ++i)
 			{
 				// call destructor of unused elements
 				m_Values[i].~T();
@@ -165,15 +165,14 @@ public:
 	// add elements to the vector
 	void PushBack(const T& value)
 	{
-		++m_Size;	// MOVED THIS TO TOP OTHERWISE IT WONT ALLOCATE MORE MEMORY
-
 		if (m_Size >= m_Capacity)
 		{
-			// if capacity is 0, set a default min capacity or double current 
 			size_t newCapacity = (m_Capacity == 0) ? 10 : m_Capacity * 2;
 			Reserve(newCapacity);
 		}
-		m_Values[m_Size] = value;
+
+		m_Values[m_Size] = value;   // write to the current end
+		++m_Size;
 	}
 
 	// remove element from the back
