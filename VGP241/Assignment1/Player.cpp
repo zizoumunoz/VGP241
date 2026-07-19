@@ -1,6 +1,12 @@
 #include "Player.h"
 #include "Stats.h"
 
+Player::Player(std::string name)
+	: mName(name)
+{
+	
+}
+
 void Player::initPlayer()
 {
 	mStats[Stats::Health] = 100;
@@ -14,4 +20,9 @@ void Player::initPlayer()
 int Player::getStat(Stats stat) const
 {
 	return mStats[stat];
+}
+
+const std::string Player::getName() const
+{
+	return mName;
 }

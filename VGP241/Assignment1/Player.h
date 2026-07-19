@@ -7,11 +7,13 @@ class Player
 {
 public:
 	Player() = default;
+	Player(std::string name);
 
 	// Function to initialize player with default values
 	void initPlayer();
 
 	int getStat(Stats stat) const;
+	const std::string getName() const;
 
 private:
 	std::string mName = "";
