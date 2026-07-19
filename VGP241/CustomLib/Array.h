@@ -51,7 +51,7 @@ public:
 		{
 			delete[] m_Values;
 		}
-
+		m_Values = new T[N];
 		for (size_t i = 0; i < N; i++)
 		{
 			m_Values[i] = other.m_Values[i];
@@ -78,7 +78,7 @@ public:
 		}
 
 		m_Values = std::move(other.m_Values);
-		other.m_Values;
+		other.m_Values = nullptr;
 		return *this;
 	}
 
@@ -108,7 +108,7 @@ public:
 	/// Get stored data
 	/// </summary>
 	/// <returns></returns>
-	T* Data() const
+	T* Data()
 	{
 		return m_Values;
 	}

@@ -1,20 +1,44 @@
-// ArraysAndVectors.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
-
+#include <Array.h>
 int main()
 {
     std::cout << "Hello World!\n";
+
+    Array<int, 10> myCustomArray;
+
+    for (size_t i = 0; i < myCustomArray.Size(); i++)
+    {
+        myCustomArray[i] = 0;
+        std::cout << myCustomArray[i] << " ";
+    }
+
+    std::cout << "\n";
+
+    for (size_t i = 0; i < myCustomArray.Size(); i++)
+    {
+        myCustomArray[i] = rand() % 10;
+        std::cout << myCustomArray[i] << " ";
+    }
+
+    std::cout << "\n";
+
+    Array<int, 10> otherArray;
+
+    otherArray = myCustomArray;
+    for (size_t i = 0; i < otherArray.Size(); i++)
+    {
+        otherArray[i] += 5;
+        std::cout << otherArray[i] << " ";
+    }
+
+
+    // Build array of 10 ints
+    // initialize them to 0
+    // iterate through them all and set the values to random numbers
+    // create a new array of 10 ints
+    // make it equal to the initial array
+    // iterate through all the elements and add 5 (print the numbers
+    // 
+
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
