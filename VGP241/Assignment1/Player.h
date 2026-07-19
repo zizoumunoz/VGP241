@@ -15,6 +15,8 @@ public:
 	int getStat(Stats stat) const;
 	const std::string getName() const;
 
+	int getPlayerScore(Player playerB) const;
+
 	void display() const;
 
 private:

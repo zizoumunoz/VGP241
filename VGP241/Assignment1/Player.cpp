@@ -5,7 +5,7 @@
 Player::Player(std::string name)
 	: mName(name)
 {
-	
+
 }
 
 void Player::initPlayer()
@@ -26,6 +26,14 @@ int Player::getStat(Stats stat) const
 const std::string Player::getName() const
 {
 	return mName;
+}
+
+int Player::getPlayerScore(Player playerB) const
+{
+	// PlayerA.Health - [(PlayerB.Attack * PlayerB.Stamina) - (PlayerA.Defense * PlayerA.Speed)]
+	return
+		mStats[Stats::Health] -
+		((playerB.getStat(Stats::Attack) * playerB.getStat(Stats::Stamina)) - (mStats[Stats::Defense] * mStats[Stats::Speed]));
 }
 
 void Player::display() const
