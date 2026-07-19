@@ -3,7 +3,9 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Folder Name="/Assignments/" />
+  <Folder Name="/Assignments/">
+    <Project Path="Assignment1/Assignment1.vcxproj" />
+  </Folder>
   <Folder Name="/Exercises/">
     <Project Path="ArraysAndVectors/ArraysAndVectors.vcxproj" />
   </Folder>
