@@ -5,6 +5,8 @@
 
 int main()
 {
+	srand(time(NULL));
+
 	std::cout << "Custom Containers Assignment 1\n";
 	// add necessary .h and .cpp files
 	// since its small, can fit it all in main
@@ -72,15 +74,40 @@ int main()
 
 	// 3f. Pick a random 2 players, compare their stats to see who would win in a fight
 
-	int player1 = rand() % players.Size();
-	int player2 = rand() % players.Size();
-
-	while (player1 == player2)
+	Player player1 = players[rand() % players.Size()];
+	Player player2;
+	do
 	{
-		player2 = rand() % players.Size();
+		player2 = players[rand() % players.Size()];
+	} while (player1.getName() == player2.getName());
+
+	std::cout << "Seleted random players: " << player1.getName() << " and " << player2.getName() << ".\n";
+
+	std::cout << "Scores: " << player1.getName() << " - " << player1.getPlayerScore(player2) << "\n";
+	std::cout << "Scores: " << player2.getName() << " - " << player2.getPlayerScore(player1) << "\n";
+
+	if (player1.getPlayerScore(player2) > player2.getPlayerScore(player1))
+	{
+		std::cout << player1.getName() << " wins!\n";
+	}
+	else if(player1.getPlayerScore(player2) == player2.getPlayerScore(player1))
+	{
+		bool coin = rand() < rand();
+		if (coin)
+		{
+			std::cout << player1.getName() << " wins by coinflip!\n";
+		}
+		else
+		{
+			std::cout << player2.getName() << " wins by coinflip!\n";
+		}
+	}
+	else
+	{
+		std::cout << player2.getName() << " wins!\n";
 	}
 
-	// std::cout << "Picked random players: " << players[player1].getName() << " and " << players[player2].getName() << "\n";
+
 
 
 }
