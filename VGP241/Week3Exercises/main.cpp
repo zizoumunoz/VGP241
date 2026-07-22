@@ -221,10 +221,56 @@ KDNode* Delete(const Vector2& data, KDNode* node, int dim)
 		return;
 	}
 
+	int nextDim = (dim + 1) % 2;
+
 	// we found the node
 	if (data.x == node->data.x && data.y == node->data.y)
 	{
-		node->data = ;
+		// we have a right subtree
+		if (node->right != nullptr)
+		{
+			node->data = FindMin(node->right, dim, nextDim);
+			node->right = Delete(node->data, node->right, nextDim);
+		}
+		// we do not have a right subtree (no right subtree solution)
+		else if (node->left != nullptr)
+		{
+			// Get smallest , in left, stomp over
+			node->data = FindMin(node->left, dim, nextDim);
+			node->right = Delete(node->data, node->left, nextDim);
+		}
+		// no subtrees so super easy
+		else
+		{
+			delete node;
+			node = nullptr;
+		}
+	}
+	// we did not find the node
+	else
+	{
+		if (dim == 0) // looking at the x dimension
+		{
+			if (data.x < node->data.x)
+			{
+				node->left = Delete(data, node->left, nextDim);
+			}
+			else
+			{
+				node->right = Delete(data, node->right, nextDim);
+			}
+		}
+		else // we are looking in the y dimension
+		{
+			if (data.y < node->data.y)
+			{
+				node->left = Delete(data, node->left, nextDim);
+			}
+			else
+			{
+				node->right = Delete(data, node->right, nextDim);
+			}
+		}
 	}
 }
 
@@ -270,10 +316,52 @@ Vector2 FindMin(KDNode* node, int dim, int cd)
 		return FindMin(node->left, dim, nextCD);
 	}
 	// if current dimension is not desired dimension, need to find smallest in both trees
-
+	return Minimum(FindMin(node->left, dim, nextCD),	// check the left branch of the smallest
+		FindMin(node->right, dim, nextCD),				// check the right branch for the smallest
+		node->data,										// maybe current node is the smallest
+		dim);
 }
 
 // find range
+
+void PrintRange(const Vector2& minRange, const Vector2& maxRange, KDNode* node, int dim)
+{
+	if (node == nullptr)
+	{
+		return;
+	}
+
+	// if the value is within the min/ma range, print
+	if (node->data.x >= minRange.x && node->data.x <= maxRange.x && node->data.y >= minRange.y && node->data.y <= maxRange.y)
+	{
+		std::cout << "(" << node->data.x << ", " << node->data.y << ")\n";
+	}
+
+	int nextDim = (dim + 1) % 2;
+	if (dim == 0) // looking at x
+	{
+		if (minRange.x <= node->data.x)
+		{
+			PrintRange(minRange, maxRange, node->left, nextDim);
+		}
+		// if max X is still larger than current x, continue right
+		if (node->data.x <= maxRange.x)
+		{
+			PrintRange(minRange, maxRange, node->right, nextDim);
+		}
+	}
+	else // looking at y
+	{
+		if (minRange.y <= node->data.y)
+		{
+			PrintRange(minRange, maxRange, node->left, nextDim);
+		}
+		if (node->data.y <= maxRange.y)
+		{
+			PrintRange(minRange, maxRange, node->right, nextDim);
+		}
+	}
+}
 
 
 void Exercise2KDTree()
@@ -294,6 +382,7 @@ void Exercise2KDTree()
 	int min = 1;
 	int max = 100;
 	KDNode* root = nullptr;
+	Vector2 deleteDataValue;
 	Vector2 data;
 	for (int i = 0; i < maxNumbers; ++i)
 	{
@@ -305,9 +394,33 @@ void Exercise2KDTree()
 			root = newNode;
 		}
 		std::cout << "(" << data.x << ", " << data.y << ") ";
+
+		if (i == maxNumbers / 2)
+		{
+			deleteDataValue = data;
+		}
 	}
 
 	std::cout << "\n\n\n";
+	PrintTree(root);
+
+	// Find the min x and y
+	//	FindMin("treeRoot", "what dimension we want", "what dimension are we currently in")
+	Vector2 minX = FindMin(root, 0, 0);
+	Vector2 minY = FindMin(root, 1, 0);
+	std::cout << "MinX: (" << minX.x << ", " << minX.y << ")\n";
+	std::cout << "MinY: (" << minY.x << ", " << minY.y << ")\n";
+	std::cout << "\n\n\n";
+
+	// delete some value and reprint
+	std::cout << "Deleting Data *" << deleteDataValue.x << ", " << deleteDataValue.y << "):\n";
+	root = Delete(deleteDataValue, root, 0);
+	
+	std::cout << "Print Within Range";
+	Vector2 minRange = { 30, 30 };
+	Vector2 maxRange = { 70, 70 };
+	PrintRange(minRange, maxRange, root, 0);
+
 	PrintTree(root);
 }
 
