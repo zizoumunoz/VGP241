@@ -4,12 +4,15 @@
     <Platform Name="x86" />
   </Configurations>
   <Folder Name="/Assignments/">
-    <Project Path="Assignment1/Assignment1.vcxproj" />
+    <Project Path="Assignment1/Assignment1.vcxproj" Id="8d803758-cff4-458c-893b-16388d331eb1" />
   </Folder>
   <Folder Name="/Exercises/">
-    <Project Path="ArraysAndVectors/ArraysAndVectors.vcxproj" />
+    <Project Path="ArraysAndVectors/ArraysAndVectors.vcxproj" Id="08089272-ac5c-4602-8188-417f983901d0" />
   </Folder>
   <Folder Name="/Library/">
-    <Project Path="CustomLib/CustomLib.vcxproj" />
+    <Project Path="CustomLib/CustomLib.vcxproj" Id="bbd7b368-1f2c-4153-bd95-1f2d521df24b" />
+  </Folder>
+  <Folder Name="/Workshops/">
+    <Project Path="Week3Exercises/Week3Exercises.vcxproj" Id="a024fb0a-4d0b-4fc0-b105-35b311dda60c" />
   </Folder>
 </Solution>
