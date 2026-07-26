@@ -13,6 +13,7 @@
     <Project Path="CustomLib/CustomLib.vcxproj" Id="bbd7b368-1f2c-4153-bd95-1f2d521df24b" />
   </Folder>
   <Folder Name="/Workshops/">
+    <Project Path="Week2Exercises/Week2Exercises.vcxproj" Id="2a84c802-a2ba-4ce7-9f97-07ad76e030bd" />
     <Project Path="Week3Exercises/Week3Exercises.vcxproj" Id="a024fb0a-4d0b-4fc0-b105-35b311dda60c" />
   </Folder>
 </Solution>

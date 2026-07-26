@@ -2,6 +2,7 @@
 
 #include <cstddef>
 #include <utility>
+#include "ContainerIterator.h"
 
 template<typename T, std::size_t N>
 
@@ -125,6 +126,14 @@ public:
 	{
 		return m_Values[index];
 	}
+
+	// equivalent of std::array's begin and end
+	using Iterator = ContainerIterator<T>;
+	using Const_Iterator = ContainerIterator<const T>;
+	Iterator Begin() { return Iterator(m_Values); }
+	Iterator End() { return Iterator(m_Values + N); }
+	Const_Iterator Begin() const { return Const_Iterator(m_Values); }
+	Const_Iterator End() const { return Const_Iterator(m_Values + N); }
 
 
 private:

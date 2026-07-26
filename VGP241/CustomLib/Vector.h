@@ -194,6 +194,9 @@ public:
 		return m_Values[index];
 	}
 
+	// Iterator section
+	using Iterator = 
+
 private:
 	T* m_Values = nullptr;
 	std::size_t m_Capacity = 0;	// maximum size of the container
