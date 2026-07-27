@@ -39,6 +39,36 @@ void GoToScreen(const std::string& screenName, std::stack<std::string>& screens)
 	screens.push(screenName);
 	std::cout << "Screen Added: " << screenName << "\n";
 }
+// Go Back Functions
+void GoBack(std::array<std::string, 10>& screens)
+{
+	for (int i = 0; i < screens.size() - 1; ++i)
+	{
+		if (!screens[i].empty())
+		{
+			std::cout << "Go Back From: " << screens[i] << "\n";
+			screens[i] = "";
+			if (i > 0)
+			{
+				std::cout << "Is On Screen: " << screens[i - 1] << "\n";
+			}
+			break;
+		}
+	}
+}
+
+void GoBack(std::vector<std::string>& screens)
+{
+	std::cout << "Go Back From: " << screens.back() << "\n";
+	screens.pop_back();
+	std::cout << "Is On Screen: " << screens.back() << "\n";
+}
+
+void GoBack(std::stack<std::string>& screens)
+{
+	std::cout << "Go back from: " << screens.top() << "\n";
+
+}
 
 void Exercise1ScreenFlow()
 {
