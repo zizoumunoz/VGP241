@@ -195,7 +195,12 @@ public:
 	}
 
 	// Iterator section
-	// stopped here to catch up on workshop
+	using Iterator = ContainerIterator<T>;
+	using Const_Iterator = ContainerIterator<const T>;
+	Iterator Begin() { return Iterator(m_Values); }
+	Iterator End() { return Iterator(m_Values + m_Size); }
+	Const_Iterator Begin() { return Const_Iterator(m_Values); }
+	Const_Iterator End() { return Const_Iterator(m_Values + m_Size); }
 private:
 	T* m_Values = nullptr;
 	std::size_t m_Capacity = 0;	// maximum size of the container
