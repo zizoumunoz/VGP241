@@ -195,8 +195,7 @@ public:
 	}
 
 	// Iterator section
-	using Iterator = 
-
+	// stopped here to catch up on workshop
 private:
 	T* m_Values = nullptr;
 	std::size_t m_Capacity = 0;	// maximum size of the container
