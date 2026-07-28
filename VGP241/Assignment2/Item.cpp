@@ -28,19 +28,29 @@ void Item::ConsumeItem()
 {
 	if (m_count > 0)
 	{
-	--m_count;
-	std::cout << m_name << ": " << m_value << "\n";
+		--m_count;
+		std::cout << m_name << ": " << m_value << "\n";
 
 	}
 	else
 	{
 		std::cout << "The item does not have any to consume.\n";
 	}
-	
+
 }
 
 void Item::AddItem()
 {
 	++m_count;
 	std::cout << m_name << ": " << m_count << "\n";
+}
+
+int Item::GetCount() const
+{
+	return m_count;
+}
+
+bool Item::operator<(const Item& other) const
+{
+	return m_count < other.GetCount();
 }

@@ -12,6 +12,10 @@ public:
 
 	void ConsumeItem();
 	void AddItem();
+
+	int GetCount() const;
+
+	bool operator<(const Item& other) const;
 private:
 	ItemType m_type;
 	std::string m_name;
