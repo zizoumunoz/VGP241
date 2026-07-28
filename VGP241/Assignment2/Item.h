@@ -14,6 +14,7 @@ public:
 	void AddItem();
 
 	int GetCount() const;
+	std::string GetName() const;
 
 	bool operator<(const Item& other) const;
 private:

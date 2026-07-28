@@ -50,6 +50,11 @@ int Item::GetCount() const
 	return m_count;
 }
 
+std::string Item::GetName() const
+{
+	return m_name;
+}
+
 bool Item::operator<(const Item& other) const
 {
 	return m_count < other.GetCount();
