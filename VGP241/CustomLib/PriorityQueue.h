@@ -56,7 +56,7 @@ private:
 	void HeapifyUp(int index)
 	{
 		int parent = (index - 1) / 2;
-		while (index > 0 && m_compare(m_values[parent], m_values[parent]))
+		while (index > 0 && m_compare(m_values[parent], m_values[index]))
 		{
 			Swap(m_values[index], m_values[parent]);
 			index = parent;
