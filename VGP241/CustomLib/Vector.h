@@ -1,7 +1,10 @@
 #pragma once
 
+#include <cstddef>
 #include <utility>
 #include <cassert>
+
+#include "ContainerIterator.h"
 
 template<typename T>
 
@@ -199,8 +202,8 @@ public:
 	using Const_Iterator = ContainerIterator<const T>;
 	Iterator Begin() { return Iterator(m_Values); }
 	Iterator End() { return Iterator(m_Values + m_Size); }
-	Const_Iterator Begin() { return Const_Iterator(m_Values); }
-	Const_Iterator End() { return Const_Iterator(m_Values + m_Size); }
+	Const_Iterator Begin() const { return Const_Iterator(m_Values); }
+	Const_Iterator End() const { return Const_Iterator(m_Values + m_Size); }
 private:
 	T* m_Values = nullptr;
 	std::size_t m_Capacity = 0;	// maximum size of the container

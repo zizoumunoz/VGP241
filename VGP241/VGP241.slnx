@@ -8,6 +8,7 @@
   </Folder>
   <Folder Name="/Exercises/">
     <Project Path="ArraysAndVectors/ArraysAndVectors.vcxproj" Id="08089272-ac5c-4602-8188-417f983901d0" />
+    <Project Path="IteratorAndPriorityQueue/IteratorAndPriorityQueue.vcxproj" Id="64ace14a-8620-407e-8a02-1d7af7cc606c" />
   </Folder>
   <Folder Name="/Library/">
     <Project Path="CustomLib/CustomLib.vcxproj" Id="bbd7b368-1f2c-4153-bd95-1f2d521df24b" />
