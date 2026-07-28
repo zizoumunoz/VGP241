@@ -11,6 +11,7 @@ public:
 	Item(ItemType itemType, int value);
 
 	void ConsumeItem();
+	void AddItem();
 private:
 	ItemType m_type;
 	std::string m_name;
