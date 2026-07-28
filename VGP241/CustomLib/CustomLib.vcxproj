@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Array.h" />
+    <ClInclude Include="PriorityQueue.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>

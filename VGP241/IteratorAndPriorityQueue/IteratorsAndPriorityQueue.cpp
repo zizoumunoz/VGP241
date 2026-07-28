@@ -1,7 +1,11 @@
+// Iterators and Priority Queue
+
 #include <iostream>
 #include <Vector.h>
 #include <Array.h>
 #include <ContainerIterator.h>
+#include <PriorityQueue.h>
+
 
 int main()
 {
@@ -9,11 +13,14 @@ int main()
 
 	Array<int, 20> arrayNumbers;
 	Vector<int> vectorNumbers;
+	PriorityQueue<int> pqNumbers;
 
 	for (size_t i = 0; i < 20; i++)
 	{
 		arrayNumbers[i] = (rand() % 100) + 1;
-		vectorNumbers.PushBack((rand() % 100) + 1);
+		int value = (rand() % 100) + 1;
+		vectorNumbers.PushBack(value);
+		pqNumbers.Push(value);
 	}
 
 	std::cout << "Iterate through Array:\n";
@@ -28,8 +35,12 @@ int main()
 	{
 		std::cout << (*it) << " ";
 	}
-	std::cout << "\n";
-
+	std::cout << "\n\n";
+	while (!pqNumbers.Empty())
+	{
+		std::cout << pqNumbers.Top() << " ";
+		pqNumbers.Pop();
+	}
 
 	return 0;
 }
