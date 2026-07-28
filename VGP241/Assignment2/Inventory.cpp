@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <ctime>
+#include <PriorityQueue.h>
 #include "Inventory.h"
 #include "ItemType.h"
 #include "Item.h"
@@ -27,5 +28,15 @@ void Inventory::AddItem(ItemType itemType)
 
 void Inventory::DisplayInventory()
 {
-	
+	PriorityQueue<Item> dispQueue;
+	for (size_t i = 0; i < m_items.Size(); i++)
+	{
+		dispQueue.Push(m_items[i]);
+	}
+
+	for (size_t i = 0; i < dispQueue.Size(); i++)
+	{
+		std::cout << dispQueue.Top().GetName() << ": " << dispQueue.Top().GetCount() << "\n";
+		dispQueue.Pop();
+	}
 }
