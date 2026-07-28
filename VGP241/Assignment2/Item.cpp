@@ -38,3 +38,9 @@ void Item::ConsumeItem()
 	}
 	
 }
+
+void Item::AddItem()
+{
+	++m_count;
+	std::cout << m_name << ": " << m_count << "\n";
+}
