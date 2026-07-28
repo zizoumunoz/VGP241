@@ -8,8 +8,8 @@ enum ItemType : int;
 class Item
 {
 public:
+	Item() = default;
 	Item(ItemType itemType, int value);
-
 	void ConsumeItem();
 	void AddItem();
 
