@@ -3,7 +3,7 @@
 #include "ItemType.h"
 
 Item::Item(ItemType itemType, int value)
-	: m_type(itemType), m_value(value)
+	: m_type(itemType), m_value(value), m_count(1)
 {
 	switch (m_type)
 	{
@@ -20,6 +20,7 @@ Item::Item(ItemType itemType, int value)
 		m_name = "Grenade";
 		break;
 	default:
+		m_name = "Error: No name";
 		break;
 	}
 }

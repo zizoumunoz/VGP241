@@ -15,7 +15,7 @@ void Inventory::Initialize()
 
 	for (size_t i = 0; i < 10; i++)
 	{
-		m_items.PushBack(Item(static_cast<ItemType>(randNum(0, 4)), randNum(10, 20)));
+		m_items.PushBack(Item(static_cast<ItemType>(randNum(0, 3)), randNum(10, 20)));
 	}
 
 

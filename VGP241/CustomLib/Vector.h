@@ -37,7 +37,7 @@ public:
 		if (other.m_Capacity > 0)
 		{
 			m_Values = new T[other.m_Capacity];
-			for (size_t i = 0; i < other.m_Capacity; i++)
+			for (size_t i = 0; i < other.m_Size; i++)
 			{
 				m_Values[i] = other.m_Values[i];
 			}
@@ -55,7 +55,7 @@ public:
 		if (other.m_Capacity > 0)
 		{
 			m_Values = new T[other.m_Capacity];
-			for (size_t i = 0; i < other.m_Capacity; ++i)
+			for (size_t i = 0; i < other.m_Size; ++i)
 			{
 				m_Values[i] = other.m_Values[i];
 			}
@@ -67,7 +67,7 @@ public:
 
 	Vector(Vector&& other)
 	{
-		m_Values = std::move(other.m_Values);
+		m_Values = other.m_Values;
 		m_Capacity = other.m_Capacity;
 		m_Size = other.m_Size;
 
@@ -110,7 +110,7 @@ public:
 			}
 
 			delete[] m_Values;
-			m_Values = std::move(newValues);
+			m_Values = newValues;
 			m_Capacity = capacity;
 		}
 	}
@@ -132,7 +132,7 @@ public:
 			for (size_t i = size; i < m_Size; ++i)
 			{
 				// call destructor of unused elements
-				m_Values[i].~T();
+				m_Size = size;
 			}
 		}
 		else if (m_Size < size)
