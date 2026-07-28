@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Item.h"
 #include "ItemType.h"
 
@@ -21,4 +22,19 @@ Item::Item(ItemType itemType, int value)
 	default:
 		break;
 	}
+}
+
+void Item::ConsumeItem()
+{
+	if (m_count > 0)
+	{
+	--m_count;
+	std::cout << m_name << ": " << m_value << "\n";
+
+	}
+	else
+	{
+		std::cout << "The item does not have any to consume.\n";
+	}
+	
 }

@@ -8,7 +8,9 @@ enum ItemType : int;
 class Item
 {
 public:
+	Item(ItemType itemType, int value);
 
+	void ConsumeItem();
 private:
 	ItemType m_type;
 	std::string m_name;
