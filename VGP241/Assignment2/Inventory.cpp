@@ -17,6 +17,11 @@ void Inventory::Initialize()
 	{
 		AddItem(static_cast<ItemType>(i));
 	}
+
+	for (size_t i = 0; i < 4; i++)
+	{
+		AddItem(static_cast<ItemType>(i));
+	}
 }
 
 void Inventory::AddItem(ItemType itemType)
@@ -38,12 +43,14 @@ void Inventory::AddItem(ItemType itemType)
 
 void Inventory::DisplayInventory()
 {
+	std::cout << "\n\nDisplaying Inventory =================\n\n";
+
 	PriorityQueue<Item> dispQueue;
 
 	for (size_t i = 0; i < m_items.Size(); i++)
 		dispQueue.Push(m_items[i]);
 
-	while (!dispQueue.Empty())
+	for (size_t i = 0; i < 4; i++)
 	{
 		std::cout << dispQueue.Top().GetName() << ": " << dispQueue.Top().GetCount() << "\n";
 		dispQueue.Pop();
