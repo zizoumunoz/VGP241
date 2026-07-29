@@ -36,8 +36,6 @@ void DepthFirstSearch(const std::vector<std::vector<int>>& graph, int startVerte
 		{
 			visited[vertex] = true;
 			std::cout << vertex << " ";
-
-
 			for (int i = 0; i < graph[vertex].size(); ++i)
 			{
 				if (!visited[graph[vertex][i]])
@@ -45,12 +43,82 @@ void DepthFirstSearch(const std::vector<std::vector<int>>& graph, int startVerte
 					process.push(graph[vertex][i]);
 				}
 			}
-
-
-
 		}
 	}
 	std::cout << "\n";
+}
+
+void DFSRecursiveHelper(const std::vector<std::vector<int>>& graph, std::vector<bool>& visited, int vertex)
+{
+	visited[vertex] = true;
+	std::cout << vertex << " ";
+	for (int i = graph[vertex].size() - 1; i >= 0; --i)
+	{
+		if (!visited[graph[vertex][i]])
+		{
+			DFSRecursiveHelper(graph, visited, graph[vertex][i]);
+		}
+	}
+}
+
+void DepthFirstRecursive(const std::vector<std::vector<int>>& graph, int startVertex)
+{
+	std::vector<bool> visited;
+	visited.resize(graph.size(), false);
+
+	std::cout << "DFS Recursive Print All:\n";
+	DFSRecursiveHelper(graph, visited, startVertex);
+	std::cout << "\n";
+}
+
+void CheckNodeConnectionDFS(const std::vector<std::vector<int>>& graph, int startVertex, int endVertex)
+{
+	// data to cofirm connection is made
+	bool hasConnection = false;
+	std::vector<int> connectedVertices;
+
+	// DFS algorithm data
+	std::vector<bool> visited;
+	visited.resize(graph.size(), false);
+
+	std::cout << "Checking if these vertices are connected (" << startVertex << ", " << endVertex << "):\n";
+	std::stack<int> process;
+	process.push(startVertex);
+	while (!process.empty())
+	{
+		int	vertex = process.top();
+		process.pop();
+		if (!visited[vertex])
+		{
+			visited[vertex] = true;
+			connectedVertices.push_back(vertex);
+			if (vertex == endVertex)
+			{
+				hasConnection = true;
+				break;
+			}
+			for (int i = 0; i < graph[vertex].size(); i++)
+			{
+				if (!visited[graph[vertex][i]])
+				{
+					process.push(graph[vertex][i]);
+				}
+			}
+		}
+	}
+	if (hasConnection)
+	{
+		std::cout << "Connection was made:\n";
+		for (int i = 0; i < connectedVertices.size(); i++)
+		{
+			std::cout << connectedVertices[i] << " ";
+		}
+		std::cout << "\n";
+	}
+	else
+	{
+		std::cout << "Links do not connect!\n";
+	}
 }
 
 void BreadthFirstSearch(const std::vector<std::vector<int>>& graph, int startVertex)
@@ -80,6 +148,39 @@ void BreadthFirstSearch(const std::vector<std::vector<int>>& graph, int startVer
 			}
 		}
 	}
+	std::cout << "\n";
+}
+
+void BFSHelper(const std::vector<std::vector<int>>& graph, std::vector<int>& depth, int currentDepth)
+{
+	bool processed = false;
+	for (int i = 0; i < graph.size(); i++)
+	{
+		if (depth[i] == currentDepth)
+		{
+			std::cout << i << " ";
+			processed = true;
+			for (int v = 0; v < graph[i].size(); v++)
+			{
+				if (depth[graph[i][v]] == -1)
+				{
+					depth[graph[i][v]] = currentDepth + 1;
+				}
+			}
+		}
+	}
+	if (processed)
+	{
+		BFSHelper(graph, depth, currentDepth + 1);
+	}
+}
+void BreadthFirstRecursive(const std::vector<std::vector<int>>& graph, int startVertex)
+{
+	std::vector<int> depth;
+	depth.resize(graph.size(), -1);
+	std::cout << "BFS Recursive Print All:\n";
+	depth[startVertex] = 0;
+	BFSHelper(graph, depth, 0);
 	std::cout << "\n";
 }
 
@@ -151,6 +252,14 @@ int main()
 	std::cin >> startVertex;
 	DepthFirstSearch(adjacencyList, startVertex);
 	BreadthFirstSearch(adjacencyList, startVertex);
+	DepthFirstRecursive(adjacencyList, startVertex);
+	BreadthFirstRecursive(adjacencyList, startVertex);
+
+	std::cout << "\n\n";
+	int endVertex = 0;
+	std::cout << "Enter a vertex to check connection:\n";
+	std::cin >> endVertex;
+	CheckNodeConnectionDFS(adjacencyList, startVertex, endVertex);
 
 
 
