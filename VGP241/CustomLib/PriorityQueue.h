@@ -35,7 +35,7 @@ public:
 	{
 		if (Empty())
 		{
-			assert(false, "Tried to pop an empty PriorityQueue!");
+			assert(false && "Tried to pop an empty PriorityQueue!");
 			return;
 		}
 

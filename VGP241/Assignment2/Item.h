@@ -15,6 +15,7 @@ public:
 
 	int GetCount() const;
 	std::string GetName() const;
+	ItemType GetType() const;
 
 	bool operator<(const Item& other) const;
 private:

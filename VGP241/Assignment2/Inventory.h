@@ -1,8 +1,7 @@
 #pragma once
 #include <Vector.h>
-
-class Item;
-enum ItemType : int;
+#include "Item.h"
+#include "ItemType.h"
 
 class Inventory
 {

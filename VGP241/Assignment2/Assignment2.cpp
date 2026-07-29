@@ -1,5 +1,5 @@
 #include "Inventory.h"
-
+#include "ItemType.h"
 
 int main()
 {

@@ -56,7 +56,12 @@ std::string Item::GetName() const
 	return m_name;
 }
 
+ItemType Item::GetType() const
+{
+	return m_type;
+}
+
 bool Item::operator<(const Item& other) const
 {
-	return m_count < other.GetCount();
+	return m_count < other.m_count;
 }

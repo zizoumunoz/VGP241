@@ -78,22 +78,24 @@ public:
 
 	Vector& operator=(Vector&& other)
 	{
-		if (m_Values != nullptr)
-		{
-			delete[] m_Values;
-			m_Values = nullptr;
-		}
+		if (this == &other)
+			return *this;
 
-		m_Values = std::move(other.m_Values);
+		delete[] m_Values;
+
+		m_Values = other.m_Values;
 		m_Capacity = other.m_Capacity;
 		m_Size = other.m_Size;
 
 		other.m_Values = nullptr;
 		other.m_Capacity = 0;
 		other.m_Size = 0;
-		return *this;
 
+		return *this;
 	}
+
+
+
 
 	// reserve - preallocate a chunk of data as long as it is greater than the current capacity
 	void Reserve(std::size_t capacity)
@@ -121,29 +123,23 @@ public:
 	// removes/deletes items above new capacity
 	void Resize(size_t size, const T& initialValue = T())
 	{
-		if (size == m_Size)
+		if (size < m_Size)
 		{
+			// Just shrink the size. Do NOT manually call destructors.
+			m_Size = size;
 			return;
 		}
 
-		if (size < m_Size)
+		if (size > m_Capacity)
 		{
-			// destroy elements above current size
-			for (size_t i = size; i < m_Size; ++i)
-			{
-				// call destructor of unused elements
-				m_Size = size;
-			}
+			Reserve(size);
 		}
-		else if (m_Size < size)
+
+		for (size_t i = m_Size; i < size; i++)
 		{
-			size_t newCapacity = std::max(size, m_Capacity);
-			Reserve(newCapacity);
-			for (size_t i = m_Size; i < size; i++)
-			{
-				m_Values[i] = initialValue;
-			}
+			m_Values[i] = initialValue;
 		}
+
 		m_Size = size;
 	}
 
@@ -181,14 +177,14 @@ public:
 	// remove element from the back
 	void PopBack()
 	{
-		assert(m_Size > 0, "No elements in the vector");
+		assert(m_Size > 0 && "No elements in the vector");
 		Resize(m_Size - 1);
 	}
 
 	// operator []
 	T& operator[](std::size_t index)
 	{
-		assert(index < m_Size, "index out of range");
+		assert(index < m_Size && "index out of range");
 		return m_Values[index];
 	}
 	const T& operator[](std::size_t index) const
