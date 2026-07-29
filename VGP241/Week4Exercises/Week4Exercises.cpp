@@ -184,6 +184,55 @@ void BreadthFirstRecursive(const std::vector<std::vector<int>>& graph, int start
 	std::cout << "\n";
 }
 
+void CheckNodeConnectionsBFS(const std::vector<std::vector<int>>& graph, int startVertex, int endVertex)
+{
+	bool hasConnection = false;
+	std::vector<int> connectedNodes;
+
+	std::cout << "Checking if these vertices connect (BFS): (" << startVertex << ", " << endVertex << "):\n";
+
+	std::vector<bool> visited;
+	visited.resize(graph.size(), false);
+
+	std::queue<int> process;
+	process.push(startVertex);
+	while (!process.empty())
+	{
+		int vertex = process.front();
+		process.pop();
+		if (!visited[vertex])
+		{
+			visited[vertex] = true;
+			connectedNodes.push_back(vertex);
+			if (vertex == endVertex)
+			{
+				hasConnection = true;
+				break;
+			}
+			for (int i = 0; i < graph[vertex].size(); i++)
+			{
+				if (!visited[graph[vertex][i]]);
+				{
+					process.push(graph[vertex][i]);
+				}
+			}
+		}
+	}
+	if (hasConnection)
+	{
+		std::cout << "Connection was made:\n";
+		for (int i = 0; i < connectedNodes.size(); i++)
+		{
+			std::cout << connectedNodes[i] << " ";
+		}
+		std::cout << "\n";
+	}
+	else
+	{
+		std::cout << "Links do not connect!\n";
+	}
+}
+
 int main()
 {
 	std::cout << "Graph Traversal\n";
