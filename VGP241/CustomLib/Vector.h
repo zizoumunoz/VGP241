@@ -13,7 +13,7 @@ class Vector
 public:
 
 	Vector()
-		: m_Values(nullptr),
+		: m_values(nullptr),
 		m_Capacity(0),
 		m_Size(0)
 	{
@@ -22,10 +22,10 @@ public:
 
 	~Vector()
 	{
-		if (m_Values != nullptr)
+		if (m_values != nullptr)
 		{
-			delete[] m_Values;
-			m_Values = nullptr;
+			delete[] m_values;
+			m_values = nullptr;
 		}
 
 		m_Capacity = 0;
@@ -36,10 +36,10 @@ public:
 	{
 		if (other.m_Capacity > 0)
 		{
-			m_Values = new T[other.m_Capacity];
+			m_values = new T[other.m_Capacity];
 			for (size_t i = 0; i < other.m_Size; i++)
 			{
-				m_Values[i] = other.m_Values[i];
+				m_values[i] = other.m_values[i];
 			}
 		}
 		m_Capacity = other.m_Capacity;
@@ -47,17 +47,17 @@ public:
 	}
 	Vector& operator=(const Vector& other)
 	{
-		if (m_Values != nullptr)
+		if (m_values != nullptr)
 		{
-			delete[] m_Values;
-			m_Values = nullptr;
+			delete[] m_values;
+			m_values = nullptr;
 		}
 		if (other.m_Capacity > 0)
 		{
-			m_Values = new T[other.m_Capacity];
+			m_values = new T[other.m_Capacity];
 			for (size_t i = 0; i < other.m_Size; ++i)
 			{
-				m_Values[i] = other.m_Values[i];
+				m_values[i] = other.m_values[i];
 			}
 		}
 		m_Capacity = other.m_Capacity;
@@ -67,11 +67,11 @@ public:
 
 	Vector(Vector&& other)
 	{
-		m_Values = other.m_Values;
+		m_values = other.m_values;
 		m_Capacity = other.m_Capacity;
 		m_Size = other.m_Size;
 
-		other.m_Values = nullptr;
+		other.m_values = nullptr;
 		other.m_Capacity = 0;
 		other.m_Size = 0;
 	}
@@ -81,13 +81,13 @@ public:
 		if (this == &other)
 			return *this;
 
-		delete[] m_Values;
+		delete[] m_values;
 
-		m_Values = other.m_Values;
+		m_values = other.m_values;
 		m_Capacity = other.m_Capacity;
 		m_Size = other.m_Size;
 
-		other.m_Values = nullptr;
+		other.m_values = nullptr;
 		other.m_Capacity = 0;
 		other.m_Size = 0;
 
@@ -103,16 +103,16 @@ public:
 		if (capacity > m_Capacity)
 		{
 			T* newValues = new T[capacity];
-			if (m_Values != nullptr)
+			if (m_values != nullptr)
 			{
 				for (size_t i = 0; i < m_Size; i++)
 				{
-					newValues[i] = m_Values[i];
+					newValues[i] = m_values[i];
 				}
 			}
 
-			delete[] m_Values;
-			m_Values = newValues;
+			delete[] m_values;
+			m_values = newValues;
 			m_Capacity = capacity;
 		}
 	}
@@ -137,7 +137,7 @@ public:
 
 		for (size_t i = m_Size; i < size; i++)
 		{
-			m_Values[i] = initialValue;
+			m_values[i] = initialValue;
 		}
 
 		m_Size = size;
@@ -170,7 +170,7 @@ public:
 			Reserve(newCapacity);
 		}
 
-		m_Values[m_Size] = value;   // write to the current end
+		m_values[m_Size] = value;   // write to the current end
 		++m_Size;
 	}
 
@@ -185,23 +185,35 @@ public:
 	T& operator[](std::size_t index)
 	{
 		assert(index < m_Size && "index out of range");
-		return m_Values[index];
+		return m_values[index];
 	}
 	const T& operator[](std::size_t index) const
 	{
 		assert(index < m_Size, "index out of range");
-		return m_Values[index];
+		return m_values[index];
 	}
 
 	// Iterator section
 	using Iterator = ContainerIterator<T>;
 	using Const_Iterator = ContainerIterator<const T>;
-	Iterator Begin() { return Iterator(m_Values); }
-	Iterator End() { return Iterator(m_Values + m_Size); }
-	Const_Iterator Begin() const { return Const_Iterator(m_Values); }
-	Const_Iterator End() const { return Const_Iterator(m_Values + m_Size); }
+	Iterator Begin() { return Iterator(m_values); }
+	Iterator End() { return Iterator(m_values + m_Size); }
+	Const_Iterator Begin() const { return Const_Iterator(m_values); }
+	Const_Iterator End() const { return Const_Iterator(m_values + m_Size); }
+	void PopFront()
+	{
+		// swap the front index all the way to the back
+		m_values[0].~T();
+		for (size_t i = 0; i < m_Size; ++i)
+		{
+			m_values[i] = m_values[i + 1];
+		}
+		PopBack();
+	}
 private:
-	T* m_Values = nullptr;
+
+
+	T* m_values = nullptr;
 	std::size_t m_Capacity = 0;	// maximum size of the container
 	std::size_t m_Size = 0;		// maximum size of elements (< m_Capacity)
 };
