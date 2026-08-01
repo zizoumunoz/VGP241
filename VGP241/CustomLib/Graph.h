@@ -114,6 +114,102 @@ public:
 
 	}
 
+	// get path DFS
+	bool GetPathDFS(int startIndex, int endIndex, Vector<const T*>& path)
+	{
+		Reset();
+
+		bool pathFound = false;
+		Node* startNode = m_nodes[startIndex];
+		Node* endNode = m_nodes[endIndex];
+		Stack<Node*> stack;
+		stack.Push(startNode);
+		while (!stack.Empty())
+		{
+			Node* node = stack.Top();
+			stack.Pop();
+			if (!node->isVisited)
+			{
+				node->isVisited = true;
+				if (node == endNode)
+				{
+					pathFound = true;
+					break;
+
+				}
+				for (size_t i = 0; i < node->edges.Size(); i++)
+				{
+					int edgeIndex = node->edges[i];
+					Node* edgeNode = m_nodes[edgeIndex];
+					if (!edgeNode->isVisited)
+					{
+						edgeNode->fromNode = node;
+						stack.Push(edgeNode);
+					}
+				}
+			}
+		}
+		if (pathFound)
+		{
+			Node* pathNode = endNode;
+			while (pathNode != nullptr)
+			{
+				path.PushBack(pathNode->data);
+				pathNode = pathNode->fromNode;
+			}
+		}
+		return pathFound;
+	}
+
+	// get path BFS
+	bool GetPathBFS(int startIndex, int endIndex, Vector<const T*>& path)
+	{
+		Reset();
+		bool pathFound = false;
+		Node* startNode = m_nodes[startIndex];
+		Node* endNode = m_nodes[endIndex];
+
+		Queue<Node*> queue;
+		queue.Enqueue(startNode);
+		while (!queue.Empty())
+		{
+			Node* node = queue.Front();
+			queue.Dequeue();
+			if (!node->isVisited)
+			{
+				node->isVisited = true;
+				if (node == endNode)
+				{
+					pathFound = true;
+					break;
+				}
+
+				for (size_t i = 0; i < node->edges.Size(); i++)
+				{
+					int edgeIndex = node->edges[i];
+					Node* edgeNode = m_nodes[edgeIndex];
+					if (!edgeNode->isVisited)
+					{
+						edgeNode->fromNode = node;
+						queue.Enqueue(edgeNode);
+					}
+				}
+			}
+		}
+		if (pathFound)
+		{
+			Node* pathNode = endNode;
+			while (pathNode != nullptr)
+			{
+				path.PushBack(pathNode->data);
+				pathNode = pathNode->fromNode;
+			}
+		}
+		return pathFound;
+	}
+
+
+
 	// print all the graph data
 	void PrintGraph()
 	{
