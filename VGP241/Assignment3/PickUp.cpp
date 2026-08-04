@@ -29,3 +29,8 @@ PickUp::PickUp(PickupType pickupType, const Vector3& pos)
 		break;
 	}
 }
+
+Vector3 PickUp::GetPos()
+{
+	return m_position;
+}

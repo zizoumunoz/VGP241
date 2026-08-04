@@ -8,6 +8,7 @@ class PickUp
 public:
 	PickUp() = default;
 	PickUp(PickupType pickupType, const Vector3& pos);
+	Vector3 GetPos();
 private:
 	PickupType m_type;
 	std::string m_name;

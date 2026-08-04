@@ -38,7 +38,7 @@ public:
 	void RemoveItem(const void* userData)
 	{
 		std::size_t numNodes = m_nodes.Size();
-		for (size_t i = 0; i < length; i++)
+		for (size_t i = 0; i < numNodes; i++)
 		{
 			if (m_nodes[i]->userData == userData)
 			{
@@ -102,7 +102,7 @@ private:
 		}
 
 		std::sort(nodes.Begin(), nodes.End()),
-			[depth](const KDNode* a, const KDNode* b)
+			[depth](KDNode* a, KDNode* b)
 			{
 				return a->point[depth] < b->point[depth];
 			});
@@ -164,7 +164,7 @@ private:
 		}
 		if (maxRange[depth] >= node->point[depth])
 		{
-			FindInRange(result, minRange, maxRange, node->left, (depth + 1) % K, filter);
+			FindInRange(result, minRange, maxRange, node->right, (depth + 1) % K, filter);
 		}
 	}
 
