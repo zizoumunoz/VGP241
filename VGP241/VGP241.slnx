@@ -21,5 +21,6 @@
     <Project Path="Week2Exercises/Week2Exercises.vcxproj" Id="2a84c802-a2ba-4ce7-9f97-07ad76e030bd" />
     <Project Path="Week3Exercises/Week3Exercises.vcxproj" Id="a024fb0a-4d0b-4fc0-b105-35b311dda60c" />
     <Project Path="Week4Exercises/Week4Exercises.vcxproj" Id="cf4346b7-3e21-4dff-a286-9a1a253acd53" />
+    <Project Path="Week5Exercises/Week5Exercises.vcxproj" Id="277e70a6-cd3b-4fc3-a3ab-3483a06c4ae9" />
   </Folder>
 </Solution>
