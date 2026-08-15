@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+
 namespace a4
 {
 	class TextureManager
@@ -9,6 +11,8 @@ namespace a4
 			static TextureManager instance;
 			return instance;
 		}
+
+		size_t LoadTexture(const std::string& filePath);
 	private:
 		TextureManager() = default;
 		TextureManager(const TextureManager&) = delete;
