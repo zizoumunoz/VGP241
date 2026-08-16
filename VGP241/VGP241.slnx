@@ -7,6 +7,7 @@
     <Project Path="Assignment1/Assignment1.vcxproj" Id="8d803758-cff4-458c-893b-16388d331eb1" />
     <Project Path="Assignment2/Assignment2.vcxproj" Id="fd94419b-2c04-48d9-91e4-d062678f9b60" />
     <Project Path="Assignment3/Assignment3.vcxproj" Id="bf6e81b5-37d3-4fb5-9bf0-a90d79ef149d" />
+    <Project Path="Assignment4/Assignment4.vcxproj" Id="5117d222-976e-4fee-9fea-d5c68179070b" />
   </Folder>
   <Folder Name="/Exercises/">
     <Project Path="ArraysAndVectors/ArraysAndVectors.vcxproj" Id="08089272-ac5c-4602-8188-417f983901d0" />
