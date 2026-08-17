@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <UnorderedMap.h>
+#include "Texture.h"
 
 namespace a4
 {
@@ -14,9 +16,13 @@ namespace a4
 
 		size_t LoadTexture(const std::string& filePath);
 	private:
+		// Singleton stuff
 		TextureManager() = default;
 		TextureManager(const TextureManager&) = delete;
 		TextureManager& operator=(const TextureManager&) = delete;
+
+		// members
+		UnorderedMap<size_t, Texture> m_textures;
 	};
 }
 

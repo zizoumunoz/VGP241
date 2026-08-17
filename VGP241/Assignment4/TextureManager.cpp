@@ -1,6 +1,11 @@
 #include "TextureManager.h"
+#include <Global.h>
 
 size_t a4::TextureManager::LoadTexture(const std::string& filePath)
 {
-	return size_t();
+	size_t uniqueId = Global::HashFunction(filePath);
+	m_textures.Insert(uniqueId, filePath);
+	return uniqueId;
 }
+
+
