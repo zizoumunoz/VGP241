@@ -8,4 +8,9 @@ size_t a4::TextureManager::LoadTexture(const std::string& filePath)
 	return uniqueId;
 }
 
+a4::Texture& a4::TextureManager::GetTexture(size_t id)
+{
+	return m_textures[id];
+}
+
 

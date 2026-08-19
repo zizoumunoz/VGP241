@@ -11,8 +11,5 @@ namespace a4
 		void Print();
 	private:
 		std::string m_filePath;
-
-
 	};
 }
-

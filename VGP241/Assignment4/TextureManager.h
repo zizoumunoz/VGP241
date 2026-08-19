@@ -15,6 +15,8 @@ namespace a4
 		}
 
 		size_t LoadTexture(const std::string& filePath);
+		Texture& GetTexture(size_t id);
+
 	private:
 		// Singleton stuff
 		TextureManager() = default;
@@ -25,4 +27,3 @@ namespace a4
 		UnorderedMap<size_t, Texture> m_textures;
 	};
 }
-
