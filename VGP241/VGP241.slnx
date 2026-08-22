@@ -13,6 +13,7 @@
     <Project Path="ArraysAndVectors/ArraysAndVectors.vcxproj" Id="08089272-ac5c-4602-8188-417f983901d0" />
     <Project Path="Graph/Graph.vcxproj" Id="c0759c49-610f-4646-9085-4c15fe1d2338" />
     <Project Path="IteratorAndPriorityQueue/IteratorAndPriorityQueue.vcxproj" Id="64ace14a-8620-407e-8a02-1d7af7cc606c" />
+    <Project Path="Maps/Maps.vcxproj" Id="863373e8-c382-4b75-ba6b-89e4fb21cc61" />
     <Project Path="SortingAndUnorderedMap/SortingAndUnorderedMap.vcxproj" Id="c601d501-1742-4b9b-99ee-1f4b1d5cc972" />
   </Folder>
   <Folder Name="/Library/">
@@ -24,5 +25,6 @@
     <Project Path="Week3Exercises/Week3Exercises.vcxproj" Id="a024fb0a-4d0b-4fc0-b105-35b311dda60c" />
     <Project Path="Week4Exercises/Week4Exercises.vcxproj" Id="cf4346b7-3e21-4dff-a286-9a1a253acd53" />
     <Project Path="Week5Exercises/Week5Exercises.vcxproj" Id="277e70a6-cd3b-4fc3-a3ab-3483a06c4ae9" />
+    <Project Path="Week7Exercises/Week7Exercises.vcxproj" Id="6cda3a61-e95b-4da1-a8f0-3c6b8bb030d3" />
   </Folder>
 </Solution>

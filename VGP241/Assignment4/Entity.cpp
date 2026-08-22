@@ -2,6 +2,10 @@
 #include "TextureManager.h"
 #include <iostream>
 
+a4::Entity::Entity()
+{
+}
+
 void a4::Entity::initialize(const std::string& textureFilePath)
 {
 	m_textureId = TextureManager::Instance().LoadTexture(textureFilePath);

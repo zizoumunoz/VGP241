@@ -6,6 +6,8 @@ namespace a4
 	class Entity
 	{
 	public:
+		Entity();
+		~Entity() = default;
 		void initialize(const std::string& textureFilePath);
 		void update();
 		void render();
