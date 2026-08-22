@@ -177,19 +177,19 @@ public:
 	// remove element from the back
 	void PopBack()
 	{
-		assert(m_Size > 0 && "No elements in the vector");
+		assert(m_Size > 0);
 		Resize(m_Size - 1);
 	}
 
 	// operator []
 	T& operator[](std::size_t index)
 	{
-		assert(index < m_Size && "index out of range");
+		assert(index < m_Size);
 		return m_values[index];
 	}
 	const T& operator[](std::size_t index) const
 	{
-		assert(index < m_Size, "index out of range");
+		assert(index < m_Size);
 		return m_values[index];
 	}
 

@@ -2,9 +2,6 @@
 #include "TextureManager.h"
 #include <iostream>
 
-a4::Entity::Entity()
-{
-}
 
 void a4::Entity::initialize(const std::string& textureFilePath)
 {
@@ -23,4 +20,9 @@ void a4::Entity::render()
 {
 	TextureManager::Instance().GetTexture(m_textureId);
 	std::cout << "Position: " << m_position.x << ", " << m_position.y << "\n";
+}
+
+size_t a4::Entity::getTexture()
+{
+	return m_textureId;
 }

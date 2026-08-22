@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Vector.h"
-
 template<typename T>
 class Queue
 {
@@ -12,12 +11,12 @@ public:
 	}
 	void Dequeue()
 	{
-		assert(!Empty(), "[Error] trying to dequeue an empty queue!");
+		assert(!Empty());
 		m_values.PopFront();
 	}
 	const T& Front() const
 	{
-		assert(!Empty(), "[Error] trying to view the front of an empty queue!");
+		assert(!Empty());
 		return m_values[0];
 	}
 

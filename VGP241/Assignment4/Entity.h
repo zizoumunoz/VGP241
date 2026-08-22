@@ -6,11 +6,12 @@ namespace a4
 	class Entity
 	{
 	public:
-		Entity();
+		Entity() = default;
 		~Entity() = default;
 		void initialize(const std::string& textureFilePath);
 		void update();
 		void render();
+		size_t getTexture();
 	private:
 		size_t m_textureId;
 		Vector2 m_position;

@@ -1,5 +1,5 @@
 #pragma once
-#include "Array.h"
+#include <array>
 
 struct Vector2
 {
@@ -10,7 +10,8 @@ struct Vector2
 			float x;
 			float y;
 		};
-		Array<float, 2> v;
+		
+		std::array<float, 2> v;
 	};
 
 	Vector2() : x(0), y(0) {}

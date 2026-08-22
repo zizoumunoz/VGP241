@@ -101,7 +101,7 @@ private:
 			return nullptr;
 		}
 
-		std::sort(nodes.Begin(), nodes.End()),
+		std::sort(nodes.Begin(), nodes.End(),
 			[depth](KDNode* a, KDNode* b)
 			{
 				return a->point[depth] < b->point[depth];
@@ -118,13 +118,13 @@ private:
 		int index = 0;
 		for (auto iter = nodes.Begin(); iter != nodes.Begin() + median; ++iter)
 		{
-			rightPoints[index++] = (*iter);
+			leftPoints[index++] = (*iter);
 		}
 
 		index = 0;
-		for (auto iter = nodes.Begin() + median + 1; item != nodes.End(); ++iter)
+		for (auto iter = nodes.Begin() + median + 1; iter != nodes.End(); ++iter)
 		{
-			right[index++] = (*iter);
+			rightPoints[index++] = (*iter);
 		}
 
 		node->left = BuildTree(leftPoints, (depth + 1) % K);
