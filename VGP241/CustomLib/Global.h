@@ -7,7 +7,7 @@
 namespace Global
 {
 	// hash function
-	std::size_t HashFunction(const std::string& str)
+	inline std::size_t HashFunction(const std::string& str)
 	{
 		std::size_t hash = 0;
 		for (size_t i = 0; i < str.size(); ++i)
@@ -42,6 +42,23 @@ namespace Global
 			}
 		}
 	}
+	// overloaded bubblesort with suport for std::vector
+	template<typename T, typename Compare = std::less<T>>
+	void BubbleSort(std::vector<T>& values, Compare sortFunc = Compare{})
+	{
+		std::size_t size = values.size();
+		for (size_t i = 0; i < size - 1; ++i)
+		{
+			for (size_t j = 0; j < size - i - 1; ++j)
+			{
+				if (sortFunc(values[j + 1], values[j]))
+				{
+					Swap(values[j + 1], values[j]);
+				}
+			}
+		}
+	}
+
 
 	// Selection sort
 	template<typename T, typename Compare = std::less<T>>

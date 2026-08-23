@@ -26,3 +26,8 @@ size_t a4::Entity::getTexture()
 {
 	return m_textureId;
 }
+
+Vector2 a4::Entity::getPosition() const
+{
+	return m_position;
+}

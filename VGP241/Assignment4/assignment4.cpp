@@ -7,6 +7,7 @@
 #include "TextureManager.h"
 #include "Texture.h"
 #include "Entity.h"
+#include <Global.h>
 int main()
 {
 	std::vector<a4::Entity> myEntities;
@@ -28,6 +29,57 @@ int main()
 
 	for (a4::Entity e : myEntities)
 	{
-		std::cout << e.getTexture() << " ";
+		e.update();
+	}
+
+	Global::BubbleSort(myEntities, [](const a4::Entity& a, a4::Entity& b) {
+		return a.getPosition().Magnitude() < b.getPosition().Magnitude();
+		});
+
+	for (a4::Entity e : myEntities)
+	{
+		e.render();
+	}
+
+	for (a4::Entity e : myEntities)
+	{
+		e.update();
+	}
+
+	Global::BubbleSort(myEntities, [](const a4::Entity& a, a4::Entity& b) {
+		return a.getPosition().Magnitude() < b.getPosition().Magnitude();
+		});
+
+	for (a4::Entity e : myEntities)
+	{
+		e.render();
+	}
+
+	for (a4::Entity e : myEntities)
+	{
+		e.update();
+	}
+
+	Global::BubbleSort(myEntities, [](const a4::Entity& a, a4::Entity& b) {
+		return a.getPosition().Magnitude() < b.getPosition().Magnitude();
+		});
+
+	for (a4::Entity e : myEntities)
+	{
+		e.render();
+	}
+
+	for (a4::Entity e : myEntities)
+	{
+		e.update();
+	}
+
+	Global::BubbleSort(myEntities, [](const a4::Entity& a, a4::Entity& b) {
+		return a.getPosition().Magnitude() < b.getPosition().Magnitude();
+		});
+
+	for (a4::Entity e : myEntities)
+	{
+		e.render();
 	}
 }

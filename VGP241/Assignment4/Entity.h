@@ -12,6 +12,7 @@ namespace a4
 		void update();
 		void render();
 		size_t getTexture();
+		Vector2 getPosition() const;
 	private:
 		size_t m_textureId;
 		Vector2 m_position;
