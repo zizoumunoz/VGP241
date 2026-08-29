@@ -10,6 +10,7 @@
     <Project Path="Assignment4/Assignment4.vcxproj" Id="5117d222-976e-4fee-9fea-d5c68179070b" />
   </Folder>
   <Folder Name="/Exercises/">
+    <Project Path="AdvancedSorting/AdvancedSorting.vcxproj" Id="4e2ca3b7-5dc6-4ef9-9901-4988300a7c7a" />
     <Project Path="ArraysAndVectors/ArraysAndVectors.vcxproj" Id="08089272-ac5c-4602-8188-417f983901d0" />
     <Project Path="Graph/Graph.vcxproj" Id="c0759c49-610f-4646-9085-4c15fe1d2338" />
     <Project Path="IteratorAndPriorityQueue/IteratorAndPriorityQueue.vcxproj" Id="64ace14a-8620-407e-8a02-1d7af7cc606c" />
