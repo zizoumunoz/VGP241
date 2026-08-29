@@ -8,6 +8,7 @@
     <Project Path="Assignment2/Assignment2.vcxproj" Id="fd94419b-2c04-48d9-91e4-d062678f9b60" />
     <Project Path="Assignment3/Assignment3.vcxproj" Id="bf6e81b5-37d3-4fb5-9bf0-a90d79ef149d" />
     <Project Path="Assignment4/Assignment4.vcxproj" Id="5117d222-976e-4fee-9fea-d5c68179070b" />
+    <Project Path="Assignment5/Assignment5.vcxproj" Id="352445a7-a550-41f4-a12a-2e0ab54ca0ce" />
   </Folder>
   <Folder Name="/Exercises/">
     <Project Path="AdvancedSorting/AdvancedSorting.vcxproj" Id="4e2ca3b7-5dc6-4ef9-9901-4988300a7c7a" />
