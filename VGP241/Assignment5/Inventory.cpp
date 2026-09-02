@@ -2,5 +2,8 @@
 
 void Inventory::pickupKey(const std::string& keyName, int amount)
 {
-	
+	if (true)
+	{
+
+	}
 }

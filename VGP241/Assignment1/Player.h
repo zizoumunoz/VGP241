@@ -3,25 +3,30 @@
 #include <Array.h>
 #include "Stats.h"
 
-class Player
+namespace a1
 {
-public:
-	Player() = default;
-	Player(std::string name);
 
-	// Function to initialize player with default values
-	void initPlayer();
+	class Player
+	{
+	public:
+		Player() = default;
+		Player(std::string name);
 
-	int getStat(Stats stat) const;
-	const std::string getName() const;
+		// Function to initialize player with default values
+		void initPlayer();
 
-	int getPlayerScore(Player playerB) const;
+		int getStat(Stats stat) const;
+		const std::string getName() const;
 
-	void display() const;
+		int getPlayerScore(Player playerB) const;
 
-private:
-	std::string mName = "";
-	Array<int, 5> mStats;
+		void display() const;
 
-};
+	private:
+		std::string mName = "";
+		Array<int, 5> mStats;
 
+	};
+
+
+}

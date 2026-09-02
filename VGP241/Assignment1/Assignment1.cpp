@@ -13,21 +13,21 @@ int main()
 	// using appropriate .h and .cpp helps practice formatting C++ code
 
 	// 3a. Create vector of players
-	Vector<Player> players;
+	Vector<a1::Player> players;
 
 	// 3b. Add 10 players with random names
 
-	players.PushBack(Player("John"));
-	players.PushBack(Player("Jane"));
-	players.PushBack(Player("Mario"));
-	players.PushBack(Player("Mary"));
-	players.PushBack(Player("Jeff"));
+	players.PushBack(a1::Player("John"));
+	players.PushBack(a1::Player("Jane"));
+	players.PushBack(a1::Player("Mario"));
+	players.PushBack(a1::Player("Mary"));
+	players.PushBack(a1::Player("Jeff"));
 
-	players.PushBack(Player("Pablo"));
-	players.PushBack(Player("Paul"));
-	players.PushBack(Player("Paula"));
-	players.PushBack(Player("Robert"));
-	players.PushBack(Player("Rupert"));
+	players.PushBack(a1::Player("Pablo"));
+	players.PushBack(a1::Player("Paul"));
+	players.PushBack(a1::Player("Paula"));
+	players.PushBack(a1::Player("Robert"));
+	players.PushBack(a1::Player("Rupert"));
 
 	for (size_t i = 0; i < players.Size(); i++)
 	{
@@ -51,31 +51,31 @@ int main()
 
 	// 3e. Add players for a total of 20
 
-	players.PushBack(Player("Pubert"));
-	players.PushBack(Player("Anisa"));
-	players.PushBack(Player("Ethan"));
-	players.PushBack(Player("Martin"));
-	players.PushBack(Player("Dale"));
+	players.PushBack(a1::Player("Pubert"));
+	players.PushBack(a1::Player("Anisa"));
+	players.PushBack(a1::Player("Ethan"));
+	players.PushBack(a1::Player("Martin"));
+	players.PushBack(a1::Player("Dale"));
 
-	players.PushBack(Player("Dave"));
+	players.PushBack(a1::Player("Dave"));
 
 
-	players.PushBack(Player("Steve"));
-	players.PushBack(Player("Matthew"));
-	players.PushBack(Player("Gilbert"));
-	players.PushBack(Player("Peter"));
-	players.PushBack(Player("Joe"));
+	players.PushBack(a1::Player("Steve"));
+	players.PushBack(a1::Player("Matthew"));
+	players.PushBack(a1::Player("Gilbert"));
+	players.PushBack(a1::Player("Peter"));
+	players.PushBack(a1::Player("Joe"));
 
-	players.PushBack(Player("Glenn"));
-	players.PushBack(Player("Meg"));
-	players.PushBack(Player("Stewart"));
-	players.PushBack(Player("Brian"));
-	players.PushBack(Player("Quahog"));
+	players.PushBack(a1::Player("Glenn"));
+	players.PushBack(a1::Player("Meg"));
+	players.PushBack(a1::Player("Stewart"));
+	players.PushBack(a1::Player("Brian"));
+	players.PushBack(a1::Player("Quahog"));
 
 	// 3f. Pick a random 2 players, compare their stats to see who would win in a fight
 
-	Player player1 = players[rand() % players.Size()];
-	Player player2;
+	a1::Player player1 = players[rand() % players.Size()];
+	a1::Player player2;
 	do
 	{
 		player2 = players[rand() % players.Size()];

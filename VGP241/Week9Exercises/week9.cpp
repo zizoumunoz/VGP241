@@ -10,6 +10,14 @@ struct Node
 	int weight = -1;
 };
 
+struct Edge
+{
+	int nodeIndex = -1;	// main node index
+	int toIndex = -1;	// linked index
+	int weight = -1;	// weight/cost/value ... of the edge
+};
+
+
 void DFS(const std::vector<std::vector<Node>>& graph, int startNode)
 {
 	int totalWeight = 0;
@@ -120,9 +128,9 @@ void PrimsAlgorithm(const std::vector<std::vector<Node>>& graph, int startIndex)
 				// check to see if they are visited
 				// AND if weight to this node is shorteter than current total weight
 				const Node& neighbor = graph[node.nodeIndex][i];
-				if (!visited[neighbor.nodeIndex] && neighbor.weight  < key[neighbor.nodeIndex])
+				if (!visited[neighbor.nodeIndex] && neighbor.weight < key[neighbor.nodeIndex])
 				{
-					key[neighbor.nodeIndex] = neighbor.weight ;
+					key[neighbor.nodeIndex] = neighbor.weight;
 					process.push({ neighbor.nodeIndex, key[neighbor.nodeIndex] });
 				}
 			}
@@ -199,8 +207,134 @@ void Exercise2Review()
 	BFS(adjacencyList, startIndex);
 }
 
+void AddEdge(std::vector<Edge>& edges, int nodeIndex, int toIndex, int weight)
+{
+	Edge newEdge;
+	newEdge.nodeIndex = nodeIndex;
+	newEdge.toIndex = toIndex;
+	newEdge.weight = weight;
+	edges.push_back(newEdge);
+}
+
+// links the edges together for MST
+class DisjointSetUnion
+{
+public:
+	DisjointSetUnion(int numNodes)
+	{
+		m_parent.resize(numNodes);
+		m_rank.resize(numNodes);
+		for (int i = 0; i < numNodes; i++)
+		{
+			m_parent[i] = i;
+		}
+	}
+	int FindParent(int nodeIndex)
+	{
+		if (m_parent[nodeIndex] != nodeIndex)
+		{
+			m_parent[nodeIndex] = FindParent(m_parent[nodeIndex]);
+		}
+		return m_parent[nodeIndex];
+	}
+	bool UniteEdge(int start, int end)
+	{
+		int rootStart = FindParent(start);
+		int rootEnd = FindParent(end);
+		if (rootStart == rootEnd)
+		{
+			return false; // already in same set
+		}
+		// union by rank
+		if (m_rank[rootStart] < m_rank[rootEnd])
+		{
+			m_parent[rootStart] = rootEnd;
+		}
+		else if (m_rank[rootStart] > m_rank[rootEnd])
+		{
+			m_parent[rootEnd] = rootStart;
+		}
+		else
+		{
+			m_parent[rootEnd] = rootStart;
+			++m_rank[rootStart];
+		}
+		return true;
+	}
+
+private:
+	std::vector<int> m_parent;
+	std::vector<int> m_rank;
+};
+
+std::vector<Edge> KruskalsAlgorithm(std::vector<Edge>& edges, int numNodes)
+{
+	std::cout << "Kruskals Algorithm:\n";
+	int totalWeight = 0;
+	std::vector<Edge> mst;
+	DisjointSetUnion dsu(numNodes);
+
+	// sort edges by weight
+	std::sort(edges.begin(), edges.end(), [](const Edge& a, const Edge& b) {return a.weight < b.weight; });
+
+	// unite the edges to build the Minimum Spanning Tree
+	for (int i = 0; i < edges.size(); i++)
+	{
+		Edge& edge = edges[i];
+		if (dsu.UniteEdge(edge.nodeIndex, edge.toIndex))
+		{
+			mst.push_back(edge);
+			std::cout << edge.nodeIndex << "-" << edge.toIndex << " ";
+			totalWeight += edge.weight;
+			if (mst.size() == numNodes - 1)
+			{
+				// reusulting algirthm is numNodes - 1 (means it is a tree)
+				// trees are nodes with edges euql to numNodes - 1
+				break;
+			}
+		}
+	}
+	std::cout << "\n Total Tree Weight: " << totalWeight << "\n";
+	return mst;
+}
+
+void Exercise3KruskalsAlgorithm()
+{
+	// Create Kruskals Algorithm
+	std::cout << "Kruskals Algorithm\n";
+	std::vector<Edge> edges;
+	AddEdge(edges, 0, 1, 9);
+	AddEdge(edges, 0, 2, 5);
+	AddEdge(edges, 0, 3, 2);
+	AddEdge(edges, 1, 3, 6);
+	AddEdge(edges, 1, 4, 5);
+	AddEdge(edges, 2, 3, 4);
+	AddEdge(edges, 2, 4, 5);
+	AddEdge(edges, 3, 4, 4);
+
+	int numNodes = 5;
+	std::vector<Edge> mst = KruskalsAlgorithm(edges, numNodes);
+	std::vector<bool> isPrinted(numNodes, false);
+	for (int i = 0; i < mst.size(); ++i)
+	{
+		Edge& edge = mst[i];
+		if (!isPrinted[edge.nodeIndex])
+		{
+			std::cout << edge.nodeIndex << " ";
+			isPrinted[edge.nodeIndex] = true;
+		}
+		if (!isPrinted[edge.toIndex])
+		{
+			std::cout << edge.toIndex << " ";
+			isPrinted[edge.toIndex] = true;
+		}
+	}
+	std::cout << "\n";
+}
+
 int main()
 {
 	std::cout << "MST:\n";
-	Exercise2Review();
+	//Exercise2Review();
+	Exercise3KruskalsAlgorithm();
 }
