@@ -26,7 +26,7 @@ namespace a6
 		// 1. Sorts players by fastest speed (use IntroSort)
 		// 2. if they have already attacked this turn:
 		//		a. With the sort callback, if the AttackCount or Health is 0
-		//		   act as if the speed is 0 (treat is as 0 in the callback, don't set it.
+		//		   act as if the speed is 0 (treat is as 0 in the callback, don't set it)
 		void OrderPlayers();
 	private:
 		std::string m_name;
