@@ -2,13 +2,13 @@
 #include "Stats.h"
 #include <iostream>
 
-Player::Player(std::string name)
+a1::Player::Player(std::string name)
 	: mName(name)
 {
 
 }
 
-void Player::initPlayer()
+void a1::Player::initPlayer()
 {
 	mStats[Stats::Health] = 100;
 
@@ -18,17 +18,17 @@ void Player::initPlayer()
 	}
 }
 
-int Player::getStat(Stats stat) const
+int a1::Player::getStat(Stats stat) const
 {
 	return mStats[stat];
 }
 
-const std::string Player::getName() const
+const std::string a1::Player::getName() const
 {
 	return mName;
 }
 
-int Player::getPlayerScore(Player playerB) const
+int a1::Player::getPlayerScore(Player playerB) const
 {
 	// PlayerA.Health - [(PlayerB.Attack * PlayerB.Stamina) - (PlayerA.Defense * PlayerA.Speed)]
 	return
@@ -36,7 +36,7 @@ int Player::getPlayerScore(Player playerB) const
 		((playerB.getStat(Stats::Attack) * playerB.getStat(Stats::Stamina)) - (mStats[Stats::Defense] * mStats[Stats::Speed]));
 }
 
-void Player::display() const
+void a1::Player::display() const
 {
 	std::cout
 		<< mName << "\n"

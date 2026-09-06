@@ -9,6 +9,7 @@
     <Project Path="Assignment3/Assignment3.vcxproj" Id="bf6e81b5-37d3-4fb5-9bf0-a90d79ef149d" />
     <Project Path="Assignment4/Assignment4.vcxproj" Id="5117d222-976e-4fee-9fea-d5c68179070b" />
     <Project Path="Assignment5/Assignment5.vcxproj" Id="352445a7-a550-41f4-a12a-2e0ab54ca0ce" />
+    <Project Path="Assignment6/Assignment6.vcxproj" Id="343104ea-27c5-4f5f-8ab2-94a224f1baec" />
   </Folder>
   <Folder Name="/Exercises/">
     <Project Path="AdvancedSorting/AdvancedSorting.vcxproj" Id="4e2ca3b7-5dc6-4ef9-9901-4988300a7c7a" />
@@ -16,6 +17,7 @@
     <Project Path="Graph/Graph.vcxproj" Id="c0759c49-610f-4646-9085-4c15fe1d2338" />
     <Project Path="IteratorAndPriorityQueue/IteratorAndPriorityQueue.vcxproj" Id="64ace14a-8620-407e-8a02-1d7af7cc606c" />
     <Project Path="Maps/Maps.vcxproj" Id="863373e8-c382-4b75-ba6b-89e4fb21cc61" />
+    <Project Path="MSTTest/MSTTest.vcxproj" Id="ae500a6a-5b30-4832-8682-f7dd5d30194a" />
     <Project Path="SortingAndUnorderedMap/SortingAndUnorderedMap.vcxproj" Id="c601d501-1742-4b9b-99ee-1f4b1d5cc972" />
   </Folder>
   <Folder Name="/Library/">
@@ -29,5 +31,6 @@
     <Project Path="Week5Exercises/Week5Exercises.vcxproj" Id="277e70a6-cd3b-4fc3-a3ab-3483a06c4ae9" />
     <Project Path="Week7Exercises/Week7Exercises.vcxproj" Id="6cda3a61-e95b-4da1-a8f0-3c6b8bb030d3" />
     <Project Path="Week8Exercises/Week8Exercises.vcxproj" Id="5d1271dd-34ac-4519-85bf-6b85f43aef45" />
+    <Project Path="Week9Exercises/Week9Exercises.vcxproj" Id="88fa0a68-8d25-4b30-931b-f77e5b8a5374" />
   </Folder>
 </Solution>

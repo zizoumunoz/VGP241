@@ -1,13 +1,10 @@
 #pragma once
-
-namespace a1
-{
+namespace a6 {
 	enum Stats
 	{
 		Health,
 		Attack,
-		Defense,
-		Stamina,
-		Speed
+		Speed,
+		AttackCount
 	};
 }
