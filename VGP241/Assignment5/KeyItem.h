@@ -3,6 +3,10 @@
 class KeyItem
 {
 public:
+	KeyItem();
+
+	KeyItem(std::string name);
+
 	/// <summary>
 	/// Increases item count by amount
 	/// </summary>
