@@ -22,9 +22,8 @@ public:
 	/// 3. Increments the count by the amount.
 	/// </summary>
 	void pickupKey(const std::string& keyName, int amount);
+	void useKey(const std::string& keyName, int amount);
 
-
-private:
 	Map<std::string, KeyItem> m_keys;
 
 };
