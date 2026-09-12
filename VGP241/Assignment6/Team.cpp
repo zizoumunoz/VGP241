@@ -80,7 +80,7 @@ int a6::Team::GetRemainingPlayers()
 
 void a6::Team::OrderPlayers()
 {
-	Global::IntroSort()
+	Global::IntroSort(m_players)
 }
 
 
