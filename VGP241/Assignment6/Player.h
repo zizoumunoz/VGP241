@@ -20,7 +20,7 @@ namespace a6
 		/// <summary>
 		/// Return value of stated stat.
 		/// </summary>
-		int getStats(Stats stat);
+		int getStats(Stats stat) const;
 
 		/// <summary>
 		/// Update a stat.
@@ -31,6 +31,8 @@ namespace a6
 		/// Returns true if health > 0
 		/// </summary>
 		bool isAlive() const;
+
+		std::string getName() const;
 
 	private:
 		std::string m_name;

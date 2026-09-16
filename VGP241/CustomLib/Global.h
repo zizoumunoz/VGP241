@@ -331,6 +331,7 @@ namespace Global
 		if (count > 1)
 		{
 			int depthLimit = 2 * std::log2(count);
+			IntroSortHelpers::IntroSortUtil(begin, end, depthLimit, comp);
 		}
 	}
 }

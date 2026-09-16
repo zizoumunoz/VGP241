@@ -18,7 +18,7 @@ void a6::Player::init()
 	m_stats[Stats::AttackCount] = 1;
 }
 
-int a6::Player::getStats(Stats stat)
+int a6::Player::getStats(Stats stat) const
 {
 	return m_stats[stat];
 }
@@ -31,4 +31,9 @@ void a6::Player::setStat(Stats stat, int value)
 bool a6::Player::isAlive() const
 {
 	return m_stats[Stats::Health] > 0;
+}
+
+std::string a6::Player::getName() const
+{
+	return m_name;
 }

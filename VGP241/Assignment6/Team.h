@@ -7,6 +7,10 @@ namespace a6
 	class Team
 	{
 	public:
+		Team() = default;
+
+		Team(std::string name);
+
 		void init(int numPlayers);
 
 		// Returns the player with the fastest speed that hasn't attacked.
@@ -28,6 +32,23 @@ namespace a6
 		//		a. With the sort callback, if the AttackCount or Health is 0
 		//		   act as if the speed is 0 (treat is as 0 in the callback, don't set it)
 		void OrderPlayers();
+
+		// i. Goes through and set all active player's AttackCount to 1
+		// ii. Call OrderPlayers to start the turn
+		void StartTurn()
+		{
+			for (size_t i = 0; i < m_players.Size(); i++)
+			{
+				if (m_players[i].isAlive())
+				{
+					m_players[i].setStat(Stats::AttackCount, 1);
+				}
+			}
+
+			OrderPlayers();
+		}
+
+		std::string getName() const;
 	private:
 		std::string m_name;
 		Vector<Player> m_players;
