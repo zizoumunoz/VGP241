@@ -20,14 +20,12 @@ void a7::City::connectAllHouses()
 {
     const float MAX_DIST = 75.0f;
 
-    // First: add all houses as nodes in both graphs
     for (size_t i = 0; i < m_houses.Size(); i++)
     {
         m_housesGraph.AddItem(&m_houses[i]);
         m_housesEdgesGraph.AddItem(&m_houses[i]);
     }
 
-    // Second: connect houses within max distance
     for (size_t i = 0; i < m_houses.Size(); i++)
     {
         for (size_t j = i + 1; j < m_houses.Size(); j++)
@@ -38,10 +36,8 @@ void a7::City::connectAllHouses()
 
             if (dist <= MAX_DIST)
             {
-                // Prim graph (adjacency)
                 m_housesGraph.AddLink(i, j, dist);
 
-                // Kruskal graph (edge list)
                 m_housesEdgesGraph.AddLink(i, j, dist);
             }
         }
@@ -56,6 +52,15 @@ float a7::City::getTotalRoadDistancePrim()
 
     // Start Prim at node 0
     m_housesGraph.ObtainMST(0, mst, links, totalWeight);
+
+    for (size_t i = 0; i < links.Size(); i++)
+    {
+        if (links[i] != nullptr)
+        {
+            std::cout << m_houses[i].getName() << " -> " << links[i]->getName() << "\n";
+
+        }
+    }
 
     return totalWeight;
 }
@@ -80,4 +85,5 @@ float a7::City::getTotalDistanceKruskal()
 
     std::cout << "Total distance: " << totalWeight << "\n";
 
+    return totalWeight;
 }

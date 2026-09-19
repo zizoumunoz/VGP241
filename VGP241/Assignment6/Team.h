@@ -14,7 +14,7 @@ namespace a6
 		void init(int numPlayers);
 
 		// Returns the player with the fastest speed that hasn't attacked.
-		Player* GetNextBattlingPlayer();
+		Player& GetNextBattlingPlayer() const;
 
 		// 1. Pass in the player from another team
 		// 2. Use that player's damage to attack a random living player in the team

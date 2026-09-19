@@ -90,7 +90,7 @@ void Merge(std::vector<int>& numbers, int start, int mid, int end)
 	{
 		if (tmpLeft[left] < tmpRight[right])
 		{
-			numbers[i]
+			numbers[i];
 		}
 	}
 }

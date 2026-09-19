@@ -3,6 +3,8 @@
 
 using namespace a6;
 
+
+
 int main()
 {
     srand(time(0));
@@ -13,13 +15,24 @@ int main()
     teamA.init(20);
     teamB.init(20);
 
-    teamA.StartTurn();
-    teamB.StartTurn();
+    int turn = 0;
 
-    Player* playerA = teamA.GetNextBattlingPlayer();
-    Player* playerB = teamB.GetNextBattlingPlayer();
+    while (teamA.GetRemainingPlayers() > 0 && teamB.GetRemainingPlayers() > 0)
+    {
+        std::cout << "\nTURN " << turn++ << "\n";
 
-    
+        teamA.StartTurn();  
+        teamB.StartTurn();
+
+        teamA.OrderPlayers();
+        teamB.OrderPlayers();
+
+        while (true)
+        {
+            Player& p1 = teamA.GetNextBattlingPlayer();
+            Player
+        }
+    }
 
     return 0;
 }

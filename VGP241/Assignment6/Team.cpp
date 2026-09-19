@@ -16,13 +16,13 @@ void a6::Team::init(int numPlayers)
 	}
 }
 
-a6::Player* a6::Team::GetNextBattlingPlayer()
+a6::Player& a6::Team::GetNextBattlingPlayer() const
 {
 	for (size_t i = 1; i < m_players.Size(); i++)
 	{
 		if (m_players[i].getStats(Stats::AttackCount) > 0 && m_players[i].getStats(Stats::AttackCount) > 0)
 		{
-			return &m_players[i];
+			return m_players[i];
 		}
 	}
 
